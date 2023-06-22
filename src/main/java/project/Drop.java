@@ -9,19 +9,21 @@ public class Drop {
     private double x;
     private double y;
     private double diameter;
-
+    double fallDelay;
+    double fallTimer;
     private double velocity;
-     boolean disappeared;
-     boolean isCollided = false;
-
+    boolean disappeared;
+    boolean isCollided = false;
     private Circle shape;
 
-    public Drop(double x, double y, Color color) {
+    public Drop(double x, double y, double fallDelay, Color color) {
         this.x = x;
         this.y = y;
         diameter = 10;
         velocity = 0;
         disappeared = false;
+        this.fallDelay = fallDelay;
+        fallTimer = 0;
 
         shape = new Circle(x, y, diameter / 2, color);
     }

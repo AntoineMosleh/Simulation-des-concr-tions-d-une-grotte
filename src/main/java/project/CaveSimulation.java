@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class CaveSimulation {
-     static final int CAVE_WIDTH = 800;
-     static final int CAVE_HEIGHT = 600;
+    static final int CAVE_WIDTH = 800;
+    static final int CAVE_HEIGHT = 600;
     private static final Color CEILING_COLOR = Color.BROWN;
     private static final Color FLOOR_COLOR = Color.BROWN;
     private static final Color DROP_COLOR = Color.BLUE;
@@ -55,8 +55,8 @@ public class CaveSimulation {
     private void createDrops() {
         if (random.nextDouble() < dropCreationFrequency ){ // Adjust the drop creation frequency as needed
             double x = random.nextDouble() * CAVE_WIDTH;
-            Drop drop = new Drop(x, 0, DROP_COLOR);
-
+            double fallDelay = random.nextDouble() * 2.0;
+            Drop drop = new Drop(x, 0, fallDelay, DROP_COLOR);
             // Vérifier s'il y a une stalactite dans un rayon de 20 autour de la goutte
             boolean stalactiteFound = false;
             for (Structure structure : structures) {
@@ -87,10 +87,14 @@ public class CaveSimulation {
         List<Drop> dropsToRemove = new ArrayList<>();
 
         for (Drop drop : drops) {
-            drop.move(dropSpeed);
+            if (drop.fallTimer >= drop.fallDelay) {
+                drop.move(dropSpeed);
 
-            if (drop.isOutOfBounds()) {
-                dropsToRemove.add(drop);
+                if (drop.isOutOfBounds()) {
+                    dropsToRemove.add(drop);
+                }
+            } else {
+                drop.fallTimer += 0.016; // Increment the fallTimer by the elapsed time (assuming 60 FPS)
             }
         }
 
