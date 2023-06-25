@@ -9,9 +9,9 @@ public class Stalagmite extends Structure {
 
     // Méthode pour augmenter la hauteur de la stalagmite
     public void increaseHeight() {
-        height += 2; // Ajoute 2 à la hauteur actuelle
+        height += 1.5; // Ajoute 1.5 à la hauteur actuelle
         shape.setHeight(height); // Met à jour la hauteur de la forme de la stalagmite
-        startY -= 2; // Déplace la position de départ vers le bas de 2 unités
+        startY -= 1.5; // Déplace la position de départ vers le bas de 1.5 unités
         shape.setY(startY); // Met à jour la position Y de la forme de la stalagmite
     }
 
