@@ -7,9 +7,9 @@ public class Stalagmite extends Structure {
     }
 
     public void increaseHeight() {
-        height++;
+        height+= 2;
         shape.setHeight(height);
-        startY--;
+        startY-= 2;
         shape.setY(startY);
     }
 

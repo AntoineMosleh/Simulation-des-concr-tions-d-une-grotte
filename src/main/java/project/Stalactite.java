@@ -3,6 +3,7 @@ package project;
 import java.util.Random;
 
 public class Stalactite extends Structure {
+    private Random random = new Random();
 
     private Random random = new Random();
 
